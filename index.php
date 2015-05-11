@@ -11,6 +11,12 @@ define('clientSecret', 'f1795294356d41468a7970fd9e4147d0');
 define('redirectURI', 'http://localhost/appacademyapi/index.php');
 define('ImageDirectory', 'pics/');
 
+if isset(($_GET['code'])) {
+	$code = ($_GET['code']);
+	$url = 'https://api.instagram.com/oauth/access_token';
+	$access_token
+}
+
  ?>
 
 <!DOCTYPE html>
