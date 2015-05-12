@@ -28,12 +28,17 @@ if (isset($_GET['code'])) {
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);// Setting it Equal to one Because we are Getting Strings Back
 	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);//but in Live Work Production we Want to set This to True
 
-}
+
 // stores results in $result
 $result = curl_exec($curl);
-curl_close();
+curl_close($curl);
 
+$results = json_decode($result, true);
+echo $results['user']['username'];
+}
+else {
  ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -47,3 +52,6 @@ After Getting Approval we are now Goingto Have the Information so That we can Pl
 <a href="https:api.instagram.com/oauth/authorize/?client_id=<?php echo clientID; ?>&redirect_uri=<?php echo redirectURI; ?>&response_type=code">LOGIN</a>
 </body>
 </html>
+<?php 
+}
+ ?>
