@@ -27,6 +27,14 @@ define('ImageDirectory', 'pics/');
  	curl_close($ch);
  	return $result;
 }
+//Function to get User id Cause Username Doesnt Allow us to get Pictures
+function getUserID() {
+$url = 'http://api.instagram.com/v1/users/search?q=' . $userName . '&client_id' . clientID;
+$instagraminfo = connectToInstragram($url);
+$results = json_decode($instagraminfo, true);
+
+echo $results['data']['0']['id'];
+}
 
 if (isset($_GET['code'])) {
 	$code = ($_GET['code']);
@@ -51,7 +59,7 @@ $result = curl_exec($curl);
 curl_close($curl);
 
 $results = json_decode($result, true);
-echo $results['user']['username'];
+getUserID($results['user']['username']);
 }
 else {
  ?>
